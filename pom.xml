@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>myweb</groupId>
+    <artifactId>mywar</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>mywar Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <finalName>mywar</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <filters>
+                        <filter>src/main/properties/config.prop</filter>
+                    </filters>
+                    <nonFilteredFileExtensions>
+
+                        <nonFilteredFileExtension>txt</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp/wr1</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                        <resource>
+                            <directory>src/main/resources2</directory>
+                        </resource>
+                        <resource>
+                            <directory>src/main/webresources</directory>
+                            <!--<includes>
+                                <include>settings.xml</include>
+                            </includes>-->
+                            <excludes>
+                                <exclude>**/html</exclude>
+                            </excludes>
+                            <filtering>true</filtering>
+                            <targetPath>xml</targetPath>
+                        </resource>
+
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <myp1>foo</myp1>
+    </properties>
+</project>
